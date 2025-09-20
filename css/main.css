@@ -1,0 +1,317 @@
+body {
+    background-color: #121212;
+    color: #fff;
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    overflow: hidden;
+    flex-direction: column;
+    position: relative;
+}
+
+/* Estrellas fijas de fondo */
+.star {
+    position: absolute;
+    background: white;
+    border-radius: 50%;
+    opacity: 0.8;
+    animation: twinkle 2s infinite alternate;
+}
+
+@keyframes twinkle {
+    0% { opacity: 0.3; }
+    100% { opacity: 1; }
+}
+
+/* Estrellas rápidas (destello) */
+.shooting-star-fast {
+    position: absolute;
+    top: -10px;
+    width: 2px;
+    height: 80px;
+    background: linear-gradient(white, transparent);
+    opacity: 1;
+    animation: fallFast 1.2s linear forwards;
+    transform: rotate(45deg);
+    pointer-events: none;
+}
+
+/* Estrellas lentas (románticas) */
+.shooting-star-slow {
+    position: absolute;
+    top: -10px;
+    width: 1px;
+    height: 50px;
+    background: linear-gradient(rgba(255,255,255,0.6), transparent);
+    opacity: 0.6;
+    animation: fallSlow 4s linear forwards;
+    transform: rotate(45deg);
+    pointer-events: none;
+}
+
+@keyframes fallFast {
+    0%   { transform: translateY(0) translateX(0) rotate(45deg); opacity: 1; }
+    100% { transform: translateY(100vh) translateX(-50vw) rotate(45deg); opacity: 0; }
+}
+
+@keyframes fallSlow {
+    0%   { transform: translateY(0) translateX(0) rotate(45deg); opacity: 0.6; }
+    100% { transform: translateY(100vh) translateX(-40vw) rotate(45deg); opacity: 0; }
+}
+
+/* Flores */
+.flowers-container {
+    text-align: center;
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Estilo del título */
+.titulo {
+    font-size: 3.5em;
+    font-weight: bold;
+    text-align: center;
+    color: #FFD700; /* Amarillo brillante como el sol */
+    text-shadow: 3px 3px 8px rgba(0, 0, 0, 0.5);
+    margin-bottom: 0.3em;
+    animation: popIn 1s ease-out;
+}
+
+/* Estilo del párrafo */
+p {
+    font-size: 1.5em;
+    text-align: center;
+    color: #FF69B4; /* Rosa primaveral */
+    text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.3);
+    max-width: 600px;
+    line-height: 1.5;
+    margin: 0 auto;
+    animation: fadeIn 2s ease-in forwards;
+}
+
+/* Animación para el título */
+@keyframes popIn {
+    0% { transform: scale(0.5); opacity: 0; }
+    100% { transform: scale(1); opacity: 1; }
+}
+
+/* Animación para el párrafo */
+@keyframes fadeIn {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+}
+
+/* Opcional: efecto hover para el título */
+.titulo:hover {
+    color: #FF8C00; /* Naranja brillante */
+    text-shadow: 4px 4px 10px rgba(0, 0, 0, 0.6);
+    transform: scale(1.05);
+    transition: all 0.3s ease-in-out;
+}
+
+.flower {
+    position: absolute;
+    bottom: -50px;
+    left: 50%;
+    transform: translateX(-50%);
+    animation: floatUp 15s linear infinite;
+    opacity: 0;
+    width: 60px;
+    height: 120px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.flower-head {
+    position: relative;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.petal {
+    position: absolute;
+    width: 20px;
+    height: 40px;
+    background-color: #FFD700;
+    border-radius: 50%;
+    transform-origin: bottom center;
+}
+
+.petal:nth-child(1) { transform: rotate(0deg) translateY(-10px); }
+.petal:nth-child(2) { transform: rotate(45deg) translateY(-10px); }
+.petal:nth-child(3) { transform: rotate(90deg) translateY(-10px); }
+.petal:nth-child(4) { transform: rotate(135deg) translateY(-10px); }
+.petal:nth-child(5) { transform: rotate(180deg) translateY(-10px); }
+.petal:nth-child(6) { transform: rotate(225deg) translateY(-10px); }
+.petal:nth-child(7) { transform: rotate(270deg) translateY(-10px); }
+.petal:nth-child(8) { transform: rotate(315deg) translateY(-10px); }
+
+.center {
+    position: absolute;
+    top: 150%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 15px;
+    height: 15px;
+    background-color: #FFC107;
+    border-radius: 50%;
+    z-index: 10;
+}
+
+.stem {
+    position: relative;
+    width: 4px;
+    height: 80px;
+    background-color: #556B2F;
+    margin-top: 60px;
+    border-radius: 2px;
+}
+
+.leaf {
+    position: absolute;
+    width: 20px;
+    height: 12px;
+    background-color: #6B8E23;
+    border-radius: 50% 0 50% 0;
+    animation: sway 3s ease-in-out infinite;
+}
+
+.leaf.left {
+    top: 25%;
+    right: 100%;
+    transform: rotate(30deg) scaleX(-1);
+    animation-delay: 0.5s;
+}
+
+.leaf.right {
+    top: 60%;
+    left: 100%;
+    transform: rotate(-30deg);
+    animation-delay: 1.5s;
+}
+
+@keyframes sway {
+    0%   { transform: rotate(0deg); }
+    50%  { transform: rotate(10deg); }
+    100% { transform: rotate(0deg); }
+}
+
+@keyframes floatUp {
+    0% { bottom: -50px; opacity: 0; }
+    10% { opacity: 1; }
+    90% { opacity: 1; }
+    100% { bottom: 100vh; opacity: 0; }
+}
+
+/* Media Queries para Responsividad */
+@media screen and (max-width: 768px) {
+    .flower {
+        width: 50px;
+        height: 100px;
+    }
+    
+    .flower-head {
+        width: 35px;
+        height: 35px;
+    }
+    
+    .petal {
+        width: 16px;
+        height: 32px;
+    }
+    
+    .center {
+        width: 12px;
+        height: 12px;
+    }
+    
+    .stem {
+        width: 3px;
+        height: 65px;
+        margin-top: 50px;
+    }
+    
+    .leaf {
+        width: 16px;
+        height: 10px;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .flower {
+        width: 40px;
+        height: 80px;
+    }
+    
+    .flower-head {
+        width: 30px;
+        height: 30px;
+    }
+    
+    .petal {
+        width: 14px;
+        height: 28px;
+    }
+    
+    .center {
+        width: 10px;
+        height: 10px;
+    }
+    
+    .stem {
+        width: 2.5px;
+        height: 55px;
+        margin-top: 40px;
+    }
+    
+    .leaf {
+        width: 14px;
+        height: 8px;
+    }
+    
+    h1 {
+        font-size: 1.2rem;
+    }
+}
+
+/* Ajustes para orientación horizontal en móviles */
+@media screen and (max-height: 500px) and (orientation: landscape) {
+    .flower {
+        width: 35px;
+        height: 70px;
+    }
+    
+    .stem {
+        height: 45px;
+    }
+    
+    h1 {
+        font-size: 1rem;
+        margin-bottom: 0.5rem;
+    }
+}
+
+/* Ajustes para tablets en orientación vertical */
+@media screen and (min-width: 769px) and (max-width: 1024px) and (orientation: portrait) {
+    h1 {
+        font-size: 2.2rem;
+    }
+}
+
+/* Ajustes para tablets en orientación horizontal */
+@media screen and (min-width: 769px) and (max-width: 1024px) and (orientation: landscape) {
+    h1 {
+        font-size: 2rem;
+    }
+}
